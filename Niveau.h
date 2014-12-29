@@ -81,7 +81,7 @@ public: // nos methodes, fonctions publiques
 	
 public: // nos attributs publiques
 
-	/*
+	
 	/// taille de la grille de jeu
 	/// les elements ne se deplacent pas pixels par pixels, mais ils se déplacent
 	/// et se positionnent dans des "cases" qui correspondent a cette grille.
@@ -96,18 +96,18 @@ public: // nos attributs publiques
 	sf::Vector2i mWindowSizePixels;
 
 	/// notre personnage
-	Personnage mPersonnage;
+	//Personnage mPersonnage;
 
 	/// la sortie du niveau
-	Sortie mSortie;
+	//Sortie mSortie;
 	
 	/// les murs qui empechent le personnage d'avancer.
 	/// aggregation.
-	std::vector<Mur*> mMurs;
+	//std::vector<Mur*> mMurs;
 
 	/// les bonus que le personnage peut prendre.
 	/// aggregation.
-	std::vector<Bonus*> mBonus;
+	//std::vector<Bonus*> mBonus;
 	
 	/// aggregation des textures deja chargee : [pathTexture, pointeurVersTexture]
 	/// 
@@ -118,7 +118,7 @@ public: // nos attributs publiques
 	/// Si vous ne voyez pas comment l'utiliser ou le faire, utilisez directement 
 	///  des textures dans vos ObjInteractifs (mais vous n'aurez pas les points correspondant pas a la question naturellement)
 	/// (et jetez un oeil sur les exemples du cours, prog10_ExemplesCodesVaries/ExempleMap)
-	std::map<std::string, sf::Texture*> mTextures;
-	*/
+	//std::map<std::string, sf::Texture*> mTextures;
+	
 };
 

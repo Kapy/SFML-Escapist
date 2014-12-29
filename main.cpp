@@ -12,12 +12,12 @@ int main()
 {
 
 	// TODO lire le fichier xml et initialiser le Niveau.
-	//Niveau lNiveau;
-	//if (!lNiveau.chargerDepuisFichierXml("datas/Niveau.xml"))
-	//{
-	//	MWARNING( "Impossible de charger le fichier xml du Niveau." );
-	//	return 1;
-	//}
+	Niveau lNiveau;
+	if (!lNiveau.chargerDepuisFichierXml("datas/Niveau.xml"))
+	{
+		MWARNING( "Impossible de charger le fichier xml du Niveau." );
+		return 1;
+	}
 
 
 	// TODO chargement des textures dans le Niveau.
@@ -49,23 +49,23 @@ int main()
 		// TODO bouger le perso
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-
+			lNiveau.bougerPerso(0, 0, 0);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
-
+			lNiveau.bougerPerso(0, 0, 0);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-
+			lNiveau.bougerPerso(0, 0, 0);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
-
+			lNiveau.bougerPerso(0, 0, 0);
 		}
 
 		// TODO gerer les actions des bonus
-
+		lNiveau.gererBonus();
 
 		// TODO detection de la fin du niveau
 
@@ -75,11 +75,14 @@ int main()
 
 
 		// TODO dessin du Niveau
-
+		lNiveau.drawContent(lWindow);
 
 		// le swap buffer (cf cours 3D "double buffering")
 		lWindow.display();
 	}
+
+
+	lNiveau.isFinished();
 
 	return EXIT_SUCCESS;
 }
