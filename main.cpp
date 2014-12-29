@@ -68,7 +68,7 @@ int main()
 		lNiveau.gererBonus();
 
 		// TODO detection de la fin du niveau
-
+		lNiveau.isFinished();
 
 		// Nettoyer la surface de rendu (back buffer devient noir)
 		lWindow.clear();
@@ -80,9 +80,6 @@ int main()
 		// le swap buffer (cf cours 3D "double buffering")
 		lWindow.display();
 	}
-
-
-	lNiveau.isFinished();
 
 	return EXIT_SUCCESS;
 }
