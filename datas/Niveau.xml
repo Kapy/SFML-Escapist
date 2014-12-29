@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<Niveau window_size_x="600" window_size_y="600" grid_size_x="15" grid_size_y="15">
+	<Personnage x="5" y="5"/>
+	<Sortie x="12" y="12"/>
+	
+	<Mur x="13" y="13"/>
+	<Mur x="12" y="13"/>
+	<Mur x="13" y="12"/>
+	<Mur x="11" y="12"/>
+	<Mur x="10" y="12"/>
+	<Mur x="13" y="11"/>
+	<Mur x="12" y="11"/>
+	<Mur x="13" y="10"/>
+	<Mur x="13" y="9"/>
+	<Mur x="14" y="9"/>
+	<Mur x="13" y="8"/>
+	<Mur x="12" y="8"/>
+	<Mur x="4" y="4"/>
+	<Mur x="5" y="4"/>
+	<Mur x="5" y="4"/>
+	<Mur x="6" y="4"/>
+	<Mur x="7" y="4"/>
+	<Mur x="7" y="5"/>
+	<Mur x="7" y="6"/>
+	<Mur x="7" y="7"/>
+	<Mur x="8" y="7"/>
+	<Mur x="9" y="7"/>
+	<Mur x="10" y="7"/>
+	<Mur x="11" y="7"/>	
+	
+	<Bonus x="4" y="12" type="AccelererPerso" />
+	<Bonus x="6" y="8" type="DetruireMur" />
+	
+</Niveau>

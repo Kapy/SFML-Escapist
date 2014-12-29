@@ -1,0 +1,241 @@
+--------------------------------------------------------------------
+Devoir pour l'ITESCIA GLJAM M1 2014-2015
+
+A rendre pour le 27 décembre 2014 au soir.
+
+A faire par binome. Pour les binomes, vous m'envoyez par mail votre groupe.
+Si il me manque des binomes le 20 novembre, je crée les groupes moi-même aux hasard et j'envoie les mails aux personnes concernées.
+
+En cas de problème (ex: bloqué + de 2h sur un problème), vous pouvez me joindre : pmorcell-3dworld@yahoo.fr.
+Si vous avez du retard, vous DEVEZ me prévenir par mail au plus tard le 18 décembre 2014.
+
+Je ne juge pas le résultat sur le degré d'intérêt du jeu, uniquement sur le code C++, ainsi que le fait que le jeu fonctionne quand même.
+Les petites erreurs mathematiques (ex:elements pas tout à faits centrés sur les tiles) ne seront pas pris en compte dans la note.
+
+Lorsque vous m'enverrez votre projet :
+	- pas besoin de m'envoyer SFML.
+	- supprimer les fichiers générés par Visual Studio qui ne servent pas (.sdf, Debug)
+	
+------------------------------------------------------------
+Le principe du "jeu" 2D à produire est le suivant : un personnage (le joueur) se déplace sur une grille (invisible).
+Il doit atteindre une sortie. 
+Il y a des murs et des bonus sur sa route.
+Le personnage, chaque mur, chaque bonus et la sortie tiennent chacun sur 1 case de la grille.
+Il y a 2 types de bonus : accélerer la vitesse de déplacement du personnage et détruire 1 mur (en marchant dessus).
+
+J'ai mis une capture d'image.
+------------------------------------------------------------
+
+En entrée :
+
+Vous avez un "main.cpp" qui utilise la bibliothèque SFML que nous avons déjà utilisée en cours.
+
+Je vous donne le .h de la classe principale qui s'appelle Niveau.
+J'ai juste mis en commentaire le nécessaire dedans pour que cela compile.
+Ce fichier contient beaucoup de commentaires qui vous aideront a comprendre comment l'application est doit fonctionner.
+
+
+Dans l'ensemble du devoir, vous pouvez ajouter vos propres fonctionnalités si vous voulez aller plus loin avec le jeu.
+
+------------------------------------------------------------
+CPP Exercice 1
+Dans Niveau.h
+	A/ Décommentez	les attributs 
+		mGridSize
+		mWindowSizePixels
+		
+		mGridSize represente la "taille de la grille" (ex: 15 * 15).
+		Cela veut dire que le personnage ne peut au maximum se déplacer que de 0 à 14.99.
+
+		mWindowSizePixels est la "taille de la fenetre en pixel" (ex : 600*600).
+
+	B/ Décommentez dans Niveau.cpp include de Niveau.h se fasse.
+	C/ Créez le corps du constructeur (d'apres les attributs qui ont été décommenté pour l'instant)
+	D/ Créez le corps vide (ou qui renvoie true/false) des methodes dans le Niveau.cpp.*
+		Mettez le vrai calcul cependant pour sizeOneCell_pixel() qui renvoie la taille d'1 cellule en pixels.
+	E/ Modifiez main.cpp pour que la fonction main() appelle les fonctions de Niveau.
+	
+	_________________________________________________
+CPP Exercice 2
+	Créez une classe ObjInteractif.
+		Personnage, Mur, Sortie et les bonus vont en dériver.
+	
+	Créez le destructeur dans le .h et le .cpp sachant cela pour les classes : 
+		ObjInteractif, Personnage, Mur, Sortie, Bonus
+	
+	Si vous ne savez pas faire d'héritage, vous n'aurez pas les points pour cette question. 
+	Vous pouvez quand même avancer dans les exercices suivants en créant des classes séparées pour Personnage, Mur, Sortie et Bonus par la suite.
+	Cependant, 
+		1/ relisez votre cours sur l'héritage
+		2/ posez moi la question si vous êtes bloqués. L'héritage c'est très important.
+	
+	_________________________________________________
+CPP Exercice 3
+	Dans ObjInteractif ajoutez les attributs prives suivants:
+	
+	/// c'est un pointeur de handle, PAS UNE AGGREGATION.
+	/// celui-ci permet d'acceder à l'instance de Niveau qui contient l'ObjInteractif.
+	Niveau* mParent;  
+	
+	/// chemin du fichier de la texture utilisee par cet objet interactif
+	std::string mTexturePath;
+	
+	Dans ObjInteractif ajoutez l'attribut public suivant :
+	
+	/// position dans la grille (en indices).
+	/// il s'agit d'une position flottante.
+	/// il est donc possible d'avoir (4.3,6.7) => dessiné à la position (4,6)
+	sf::Vector2f mPositionInGrid;
+		
+	Mettez à jour ObjInteractif en fonction.
+	_________________________________________________
+CPP Exercice 4
+	Ajoutez un constructeur dans ObjInteractif qui prend 2 paramètres :
+		Niveau* pParent et std::string pTexturePath
+		Initialisez en fonction de cela ses attributs grace a la liste d'initialisation.
+		
+	Note : si vous n'utilisez pas la liste d'initialisation du constructeur, je mets 0 à cette question.
+
+	Ajoutez un constructeur dans Personnage, Mur, Sortie, Bonus qui prend juste en entree Niveau* pParent.
+	
+	Ce constructeur appelle le constructeur de ObjInteractif ci-dessus dans sa liste d'initialisation.
+		Pour le path de la texture vous pouvez utilisez les chemins vers vos datas (ex: "datas/perso.png") à ce niveau.
+	_________________________________________________
+
+CPP Exercice 5
+	Ajoutez la fonctions suivante dans ObjInteractif :
+	sf::Vector2i getRoundedPositionInGrid();
+	Cette fonction calcule la position arrondie en entier à partir de mPositionInGrid.
+	Cela permettra de déterminer ensuite si 2 objets sont sur la même case par exemple.
+		ex: Personnage et Bonus
+	
+	_________________________________________________
+CPP Exercice 6
+	Créez la fonction de dessin de ObjInteractif.
+	Vous pouvez ajouter de nouveaux attributs dans ObjInteractif si vous le voulez.
+	Rappel : il faudra utiliser des sf::Sprites aussi lors du dessin,
+			 cependant, on peut créer des sprites temporairement au moment du dessin.
+			 
+			 
+	/// dessine l'element en question.
+	/// par defaut : cree un sprite temporaire,
+	///				 puis change son echelle pour qu'il tienne sur 1 case de la grille, 
+	///				 puis le positionne, puis le dessine dans pSurfaceDeRendu
+	/// 
+	/// pSurfaceDeRendu: en general votre fenetre de rendu (de type sf::RenderWindow qui herite de de sf::RenderTarget).
+	///
+	/// note : vous pouvez creer un sprite et le supprimer (sans new/delete) au cours du dessin, 
+	///			cela n'aura pas un gros impact sur les performances.
+	///
+	/// note 2 : par contre, la creation d'un VertexArray meme vide aura un certain cout
+	///			(car il fait des allocations dynamique de memoire en interne).
+	virtual void dessiner(sf::RenderTarget& pSurfaceDeRendu);
+	
+	_________________________________________________
+CPP Exercice 7
+	Dans Niveau.h
+		Décommentez le Personnage
+		Décommentez la Sortie
+		Décommentez les Murs
+	
+	Mettez à jour le constructeur et le destructeur pour liberer la memoire
+		_________________________________________________
+CPP Exercice 8
+	Dans Niveau.cpp
+		complétez le code de drawContent.
+	
+	Ecrivez une première version de :
+		void bougerPerso(int dirX, int dirY, float dt_s);
+		bool isFinished();
+	
+	A ce niveau, vous pouvez déjà créer un Niveau en C++, faire se deplacer votre personnage,
+	et atteindre la sortie (et finir le jeu).
+	_________________________________________________
+CPP Exercice 9
+	Dans Niveau, on va stocker toutes nos textures dans une map (un tableau associatif clé/valeur).
+	Cela nous évitera de les charger pour chaque ObjInteractif.
+	
+	Dans Niveau.h décommentez l'attribut std::map<std::string, sf::Texture*> mTextures;
+	On y associe au path d'une texture un poitneur vers la texture déjà chargée.
+	Au début du main, remplissez cette map.
+	
+	Mettez à jour le constructeur et le destructeur de Niveau pour gérer cette aggregation.
+	
+	Mettez à jour la methode dessiner de ObjInteractif, pour qu'elle utilise le pointeur vers le niveau parent
+	pour obtenir la texture (si ce n'est pas déjà le cas).
+	Vous pouvez passez par mParent pour retrouver le pointeur vers la sf::Texture necessaire au dessin.
+	
+	Si cela est trop compliqué, stockez simplement la sf::Texture* dans ObjInteractif. 
+	(Je ne compterai pas les points par contre).
+	
+	_________________________________________________
+CPP Exercice 10
+	Ajoutez les parametres suivants dans le Personnage afin que l'on puisse créer les bonus par la suite.
+	Mettez à jour le constructeur et le destructeur de Personnage.
+	
+	// vitesse de déplacement courante
+	float mDeplacementSpeed;
+
+	// nombre de murs que le personnage peut détruire (grace aux bonus)
+	int mNumMursTraversables;
+	_________________________________________________
+CPP Exercice 11
+	Créez une class Bonus.
+	Elle hérite de ObjInteractif.
+	Elle dispose d'un constructeur avec 1 paramètre : Niveau *pParent.
+	
+	Sa différence par rapport à Mur par exemple est une nouvelle fonction qui sera appelée quand Personnage marchera sur le bonus:
+	
+	// déclencher un bonus
+	virtual void declencher();
+		
+	Créez deux classes qui héritent de Bonus :
+		BonusAccelererPerso
+			va augmenter la vitesse de deplacement du personnage
+		BonusDetruireMur
+			va augmenter le compteur mNumMursTraversables du Personnage.
+			a chaque fois que le personnage marche sur un mur, il detruit le mur et ce compteur diminue.		
+	
+	Ces classes disposent de redéfinition de declencher().
+	_________________________________________________
+CPP Exercice 12
+	Dans Niveau.h décommentez mBonus, effectuez les changements adéquats dans les fonctions de la classe Niveau.
+	(gestion mémoire, gererBonus(), bougerPerso())
+	_________________________________________________
+CPP Exercice 13
+	Lisez attentivement le commentaire de la fonction chargerDepuisFichierXml,
+	puis créez le corps de la fonction chargerDepuisFichierXml.
+	Finalisez l'application pour utiliser un fichier xml qui corresponde au format que vous avez choisi.
+	
+	Note : Tinyxml utilise des "char*". Il s'agit d'une ancienne version des strings.
+	Comme c'est un pointeur, il peut etre NULL.
+	
+	On peut transformer un char*c en string ainsi :
+		std::string maString = monCharEtoile;
+		
+	et on peut obtenir un char* à partir d'une string ainsi :
+		mString.c_str();
+	
+	Il est dangereux de comparer 2 char* avec == car cela compare les adresses des pointeurs au lieu des contenus textes.
+	Préférez donc une conversion en std::string.
+	
+	_________________________________________________
+CPP Exercice 14 (bonus)
+	Empechez les classes Niveau et ObjInteractif d'être copiables.
+	Les codes suivants doivent produire une erreur de compilation ou de linker :
+	// code 1 :
+	ObjInteractif a;
+	ObjInteractif b = a;
+	
+	// code 2 :
+	ObjInteractif c;
+	ObjInteractif d;
+	c = d;	
+	
+
+**************************
+Il n'y a pas d'exercices de 3D ou OpenGL, c'est pourquoi le devoir C++ est plus long que d'habitude.
+
+
+
+
