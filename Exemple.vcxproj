@@ -92,9 +92,13 @@
     <ClCompile Include="tinyxml\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="Mur.h" />
     <ClInclude Include="Niveau.h" />
     <ClInclude Include="EasyDefines.h" />
     <ClInclude Include="ObjInteractif.h" />
+    <ClInclude Include="Personnage.h" />
+    <ClInclude Include="Sortie.h" />
     <ClInclude Include="tinyxml\tinystr.h" />
     <ClInclude Include="tinyxml\tinyxml.h" />
   </ItemGroup>
