@@ -5,13 +5,13 @@
 
 class Sortie : public ObjInteractif
 {
-
+	Niveau* pParent;
 public:
 
-	Sortie();
-	~Sortie();
+	Sortie(Niveau* pParent) : pParent(pParent)
+	{}
 
-	Sortie(Niveau* pParent);
+	~Sortie();
 
 private:
 

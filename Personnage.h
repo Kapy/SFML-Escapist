@@ -5,13 +5,13 @@
 
 class Personnage : public ObjInteractif
 {
-
+	Niveau* pParent;
 public:
 
-	Personnage();
-	~Personnage();
+	Personnage(Niveau* pParent) : pParent(pParent)
+	{}
 
-	Personnage(Niveau* pParent);
+	~Personnage();
 
 private:
 	 

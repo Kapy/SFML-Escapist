@@ -4,13 +4,16 @@
 
 class ObjInteractif
 {
+	Niveau* pParent;
+	std::string pTexturePath;
 
 public:
 
 	ObjInteractif();
 	~ObjInteractif();
 
-	ObjInteractif(Niveau* pParent, std::string pTexturePath);
+	ObjInteractif(Niveau* pParent, std::string pTexturePath) : pParent(pParent), pTexturePath(pTexturePath)
+	{}
 
 	/// position dans la grille (en indices).
 	/// il s'agit d'une position flottante.

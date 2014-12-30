@@ -5,13 +5,13 @@
 
 class Bonus : public ObjInteractif
 {
-
+	Niveau* pParent;
 public:
 
-	Bonus();
-	~Bonus();
+	Bonus(Niveau* pParent) : pParent(pParent)
+	{}
 
-	Bonus(Niveau* pParent);
+	~Bonus();
 
 private:
 

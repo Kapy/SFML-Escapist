@@ -5,13 +5,13 @@
 
 class Mur : public ObjInteractif
 {
-
+	Niveau* pParent;
 public:
 
-	Mur();
-	~Mur();
+	Mur(Niveau* pParent) : pParent(pParent)
+	{}
 
-	Mur(Niveau* pParent);
+	~Mur();
 
 private:
 
