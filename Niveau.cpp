@@ -11,9 +11,6 @@
 #include "tinyxml/tinyxml.h"
 */
 
-template<typename T >
-Vector2< T > operator/ (const Vector2< T > & left, T right);
-
 Niveau::Niveau() :mGridSize(), mWindowSizePixels()
 {
 
@@ -21,12 +18,12 @@ Niveau::Niveau() :mGridSize(), mWindowSizePixels()
 
 bool Niveau::chargerDepuisFichierXml(std::string pFichierXml)
 {
-
+	return false;
 }
 
 sf::Vector2i Niveau::sizeOneCell_pixel()
 {
-	sf::Vector2i sizeOneCell_pixel = mGridSize / mWindowSizePixels;
+	sf::Vector2i sizeOneCell_pixel = mGridSize / 600;
 
 	return sizeOneCell_pixel;
 }
@@ -44,7 +41,7 @@ void Niveau::bougerPerso(int dirX, int dirY, float dt_s)
 
 bool Niveau::isFinished()
 {
-
+	return false;
 }
 
 void Niveau::gererBonus()
