@@ -9,7 +9,9 @@ class Bonus : public ObjInteractif
 public:
 
 	Bonus(Niveau* pParent) : pParent(pParent)
-	{}
+	{
+		ObjInteractif(pParent, "datas/bonus.png");
+	}
 
 	~Bonus();
 

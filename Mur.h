@@ -9,7 +9,9 @@ class Mur : public ObjInteractif
 public:
 
 	Mur(Niveau* pParent) : pParent(pParent)
-	{}
+	{
+		ObjInteractif(pParent, "datas/brick.png");
+	}
 
 	~Mur();
 

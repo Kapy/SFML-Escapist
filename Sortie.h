@@ -9,7 +9,9 @@ class Sortie : public ObjInteractif
 public:
 
 	Sortie(Niveau* pParent) : pParent(pParent)
-	{}
+	{
+		ObjInteractif(pParent, "datas/sortie.png");
+	}
 
 	~Sortie();
 

@@ -9,7 +9,9 @@ class Personnage : public ObjInteractif
 public:
 
 	Personnage(Niveau* pParent) : pParent(pParent)
-	{}
+	{
+		ObjInteractif(pParent, "datas/perso.png");
+	}
 
 	~Personnage();
 
