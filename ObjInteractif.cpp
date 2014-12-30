@@ -1,12 +1,8 @@
 #include "ObjInteractif.h"
 
-class ObjInteractif
+ObjInteractif::~ObjInteractif() {};
+
+sf::Vector2f mPositionInGrid()
 {
-public:
 
-	ObjInteractif();
-	~ObjInteractif();
-
-private:
-
-};
+}
