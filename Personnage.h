@@ -2,7 +2,14 @@
 
 #include "ObjInteractif.h"
 
-class Personnage
+class Personnage : public ObjInteractif
 {
+
+public:
+
+	Personnage();
+	~Personnage();
+
+private:
 	 
 };
