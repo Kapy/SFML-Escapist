@@ -10,6 +10,8 @@ public:
 	ObjInteractif();
 	~ObjInteractif();
 
+	ObjInteractif(Niveau* pParent, std::string pTexturePath);
+
 	/// position dans la grille (en indices).
 	/// il s'agit d'une position flottante.
 	/// il est donc possible d'avoir (4.3,6.7) => dessiné à la position (4,6)
@@ -26,3 +28,5 @@ private:
 	std::string mTexturePath;
 
 };
+
+
