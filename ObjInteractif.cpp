@@ -11,6 +11,6 @@ sf::Vector2f mPositionInGrid()
 
 sf::Vector2i getRoundedPositionInGrid()
 {
-	sf::Vector2i RoundedPositionInGrid;
-	return RoundedPositionInGrid;
+	sf::Vector2i roundedPositionInGrid;
+	return roundedPositionInGrid;
 }
