@@ -20,6 +20,8 @@ public:
 	/// il est donc possible d'avoir (4.3,6.7) => dessiné à la position (4,6)
 	sf::Vector2f mPositionInGrid;
 
+	sf::Vector2i getRoundedPositionInGrid();
+
 
 private:
 
